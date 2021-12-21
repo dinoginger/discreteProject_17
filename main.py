@@ -72,7 +72,7 @@ def cut_vertices(graph: list) -> list:
     return func_cut_vertices.cut_vertices(graph)
 
 
-def find_bridgess(graph: list) -> list:
+def find_bridges(graph: list) -> list:
     """
     Returns a list containing bridges on given undirected
     graph.
