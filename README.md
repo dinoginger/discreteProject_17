@@ -191,7 +191,7 @@ def rec_find_bridges(graph_dict: dict, vertices: list, u: int, visited: list,
 
 **Приклад роботи:**
 
-![Приклад алгоритму](img/graph2.png) 
+![Приклад алгоритму](img/graph2.png)
 ![Приклад алгоритму](img/result2.png) 
 
 
