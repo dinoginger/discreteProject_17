@@ -34,7 +34,7 @@ def write(path: str, graph: list) -> None:
     return func_read_write.write_graph(path, graph)
 
 
-def strongly_connected_components(graph: list):
+def strongly_connected_components(graph: list) -> list:
     """
     Function which uses Tarjan's alogrithm to find
     strongly connected components of the given oriented graph.
@@ -55,7 +55,7 @@ def strongly_connected_components(graph: list):
     return func_strongly_connected.find_SCC(graph)
 
 
-def cut_vertices(graph):
+def cut_vertices(graph: list) -> list:
     """
     A function that finds cut vertices in O(n+m)
 
@@ -72,7 +72,7 @@ def cut_vertices(graph):
     return func_cut_vertices.cut_vertices(graph)
 
 
-def find_bridgess(graph):
+def find_bridgess(graph: list) -> list:
     """
     Returns a list containing bridges on given undirected
     graph.
