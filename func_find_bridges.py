@@ -59,18 +59,18 @@ def rec_find_bridges(graph_dict: dict, vertices: list, u: int, visited: list,
     low[idx] = time
     time += 1
 
-    for ver in graph_dict[u]:
+    for ver in graph_dict[u]: # iter for each connected vertex
         idx_1 = vertices.index(ver)
-        if visited[idx_1] is False:
+        if visited[idx_1] is False: 
             parent[idx_1] = u
-            rec_find_bridges(graph_dict, vertices, ver, visited,
+            rec_find_bridges(graph_dict, vertices, ver, visited, # recur for each unvisited vertex
                              parent, low, disc, time, bridges)
-            low[idx] = min(low[idx], low[idx_1])
-            if low[idx_1] > disc[idx]:
+            low[idx] = min(low[idx], low[idx_1]) # set the lowest possible low for vertex
+            if low[idx_1] > disc[idx]: # check whether an edge is a bridge
                 bridge = (u, ver)
                 bridges.append(bridge)
         elif ver != parent[idx]:
-            low[idx] = min(low[idx], disc[idx_1])
+            low[idx] = min(low[idx], disc[idx_1]) # set lowest low if vertex has a back edge
 
     return bridges
 
@@ -85,17 +85,17 @@ def find_bridges(graph: list) -> list:
         list: list of bridges
     """
 
-    graph_dict = create_adj_matrix(graph)
-    vertices = list(graph_dict.keys())
-    vertices_num = len(graph_dict)
-    bridges = []
-    time = 0
-    visited = [False] * vertices_num
-    disc = [0] * vertices_num
-    low = [0] * vertices_num
-    parent = [0] * vertices_num
+    graph_dict = create_adj_matrix(graph) # dictionary of adjacency matrix
+    vertices = list(graph_dict.keys()) # list of vertices
+    vertices_num = len(graph_dict) # quantity of vertices
+    bridges = [] # list of bridges in graph
+    time = 0 
+    visited = [False] * vertices_num # list which tells whether vertex is visited or not
+    disc = [0] * vertices_num # list which indicates when vetex was discovered 
+    low = [0] * vertices_num # list of disc of lowest vertex that can be visited in subtree
+    parent = [0] * vertices_num # list of parent vertices for each vertex
 
     for i in graph_dict:
-        if visited[vertices.index(i)] is False:
+        if visited[vertices.index(i)] is False: #recur for each unvisited vertex
             return rec_find_bridges(graph_dict, vertices, i, visited, parent,
                                     low, disc, time, bridges)
