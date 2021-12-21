@@ -16,6 +16,7 @@ def create_adj_matrix(graph: list) -> dict:
 
     adj_matrix = dict()
 
+
     for node1, node2 in graph[1:]:
         if node1 not in adj_matrix:
             adj_matrix[node1] = {node2}
